@@ -7,9 +7,7 @@ interface DetailProps {
 }
 
 const Detail: React.FC<DetailProps> = ({ poem, onBack }) => {
-  const { author, linecount, lines, title } = poem;
-
-  const content = "Why is this not rendering? ..... 😅";
+  const { author, linecount, lines, title, category } = poem;
 
   return (
     <div className="detail">
@@ -18,8 +16,17 @@ const Detail: React.FC<DetailProps> = ({ poem, onBack }) => {
       </button>
       <h1 className="title">{title}</h1>
       <h2 className="author">By {author}</h2>
-      <div className="content">{content}</div>
-      <p className="lines">{linecount}</p>
+      <p className="category">
+        <strong>Category:</strong> {category || "Uncategorized"}
+      </p>
+      <div className="content">
+        {lines.map((line, index) => (
+          <p key={index}>{line}</p>
+        ))}
+      </div>
+      <p className="lines-count">
+        <strong>Total Lines:</strong> {linecount}
+      </p>
     </div>
   );
 };

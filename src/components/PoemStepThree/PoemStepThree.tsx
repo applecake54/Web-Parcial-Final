@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
 interface PoemStepThreeProps {
-  onFinish: () => void;
+  onComplete: () => void;
   onBack: () => void;
 }
 
-const PoemStepThree: React.FC<PoemStepThreeProps> = ({ onFinish, onBack }) => {
+const PoemStepThree: React.FC<PoemStepThreeProps> = ({ onComplete, onBack }) => {
   const [category, setCategory] = useState("");
 
   const handleFinish = () => {
     if (category) {
       console.log({ category });
-      onFinish();
+      onComplete();
     } else {
       alert("Please select a category.");
     }
